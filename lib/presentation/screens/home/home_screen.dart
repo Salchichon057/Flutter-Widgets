@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:widgets_app/config/menu/menu_items.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const String routeName = 'home_screen';
+
   const HomeScreen({super.key});
 
   @override
@@ -47,11 +49,13 @@ class _CustomListTitle extends StatelessWidget {
       subtitle: Text(menuItem.subtitle),
       onTap: () {
         // Navigator.pushNamed(context, menuItem.link);
-        context.push(menuItem.link);
         // Existen varias formas de navegar entre pantallas, en este caso se usa la forma de GoRouter
         // .push() es un método de GoRouter que permite navegar a una nueva pantalla
         // .pushNamed() es un método que usa el nombre de la ruta para navegar a una nueva pantalla
         // .replace() es un método que reemplaza la pantalla actual por una nueva
+
+        context.push(menuItem.link);
+        // context.pushNamed(CardsScreen.routeName);
       }
     );
   }
