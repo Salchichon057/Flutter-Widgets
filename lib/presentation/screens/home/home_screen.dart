@@ -46,7 +46,7 @@ class _CustomListTitle extends StatelessWidget {
       subtitle: Text(menuItem.subtitle),
       onTap: () {
         Navigator.pushNamed(context, menuItem.link);
-      },
+      }
     );
   }
 }
