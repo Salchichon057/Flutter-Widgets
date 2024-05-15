@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_app/config/menu/menu_items.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -6,17 +7,46 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Screen'),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('Hello World!'),
-          ],
+        appBar: AppBar(
+          title: const Text('Home Screen'),
         ),
-      ),
+        body: const _HomeView());
+  }
+}
+
+class _HomeView extends StatelessWidget {
+  const _HomeView();
+
+  @override
+  Widget build(BuildContext context) {
+
+    return ListView.builder(
+      itemCount: appMenuItems.length,
+      itemBuilder: (context, index) {
+        final menuItem = appMenuItems[index];
+        return _CustomListTitle(menuItem: menuItem);
+      },
+    );
+  }
+}
+
+class _CustomListTitle extends StatelessWidget {
+  final MenuItem menuItem;
+
+  const _CustomListTitle({required this.menuItem});
+
+  @override
+  Widget build(BuildContext context) {
+    final  colors = Theme.of(context).colorScheme; // Sirve para obtener los colores del tema actual
+
+    return ListTile(
+      leading: Icon(menuItem.icon, color: colors.primary),
+      trailing: Icon(Icons.arrow_forward_ios_outlined, color: colors.primary),
+      title: Text(menuItem.title),
+      subtitle: Text(menuItem.subtitle),
+      onTap: () {
+        Navigator.pushNamed(context, menuItem.link);
+      },
     );
   }
 }
