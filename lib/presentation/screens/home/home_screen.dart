@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:widgets_app/config/menu/menu_items.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -45,7 +46,12 @@ class _CustomListTitle extends StatelessWidget {
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subtitle),
       onTap: () {
-        Navigator.pushNamed(context, menuItem.link);
+        // Navigator.pushNamed(context, menuItem.link);
+        context.push(menuItem.link);
+        // Existen varias formas de navegar entre pantallas, en este caso se usa la forma de GoRouter
+        // .push() es un método de GoRouter que permite navegar a una nueva pantalla
+        // .pushNamed() es un método que usa el nombre de la ruta para navegar a una nueva pantalla
+        // .replace() es un método que reemplaza la pantalla actual por una nueva
       }
     );
   }
