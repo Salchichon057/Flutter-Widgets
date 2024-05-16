@@ -31,4 +31,14 @@ class AppTheme {
       centerTitle: false
     )
   );
+
+
+  // El copyWith es un método que se usa para copiar un objeto y modificar sus propiedades
+  AppTheme copyWith({
+    int? selectedColor,
+    bool? isDarkMode
+  }) => AppTheme(
+    selectedColor: selectedColor ?? this.selectedColor,
+    isDarkMode: isDarkMode ?? this.isDarkMode
+  );
 }
